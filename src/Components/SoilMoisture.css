@@ -1,0 +1,28 @@
+.soil{
+    padding:80px 8%;
+    text-align:center;
+    background:#eef9ee;
+}
+
+.soil h2{
+    color:#2e7d32;
+    margin-bottom:30px;
+    font-size:40px;
+}
+
+.soil input{
+    width:400px;
+    max-width:90%;
+}
+
+.soil h3{
+    margin-top:20px;
+    font-size:35px;
+    color:#1b5e20;
+}
+
+.soil p{
+    margin-top:20px;
+    font-size:24px;
+    font-weight:bold;
+}

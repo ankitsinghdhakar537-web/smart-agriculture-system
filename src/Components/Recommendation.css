@@ -1,0 +1,75 @@
+.recommend{
+
+padding:80px 8%;
+
+text-align:center;
+
+background:white;
+
+}
+
+.recommend h2{
+
+font-size:40px;
+
+margin-bottom:40px;
+
+color:#2e7d32;
+
+}
+
+.slider{
+
+margin:30px auto;
+
+width:450px;
+
+max-width:90%;
+
+}
+
+.slider label{
+
+display:block;
+
+margin-bottom:10px;
+
+font-weight:bold;
+
+}
+
+.slider input{
+
+width:100%;
+
+}
+
+.recommend-card{
+
+margin-top:40px;
+
+padding:30px;
+
+background:#f1fff1;
+
+border-radius:15px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+}
+
+.recommend-card h3{
+
+color:#2e7d32;
+
+margin-bottom:20px;
+
+}
+
+.recommend-card p{
+
+font-size:20px;
+
+margin:10px;
+
+}

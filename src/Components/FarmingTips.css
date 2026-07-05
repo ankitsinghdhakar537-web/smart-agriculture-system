@@ -1,0 +1,69 @@
+.tips{
+
+padding:80px 8%;
+
+text-align:center;
+
+background:#eef8ee;
+
+}
+
+.tips h2{
+
+font-size:40px;
+
+margin-bottom:40px;
+
+color:#2E7D32;
+
+}
+
+.tips label{
+
+font-size:22px;
+
+font-weight:bold;
+
+}
+
+.tips input{
+
+width:450px;
+
+max-width:90%;
+
+margin-top:20px;
+
+}
+
+.tip-card{
+
+margin:auto;
+
+margin-top:40px;
+
+max-width:600px;
+
+padding:30px;
+
+background:white;
+
+border-radius:15px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.tip-card h3{
+
+color:#2E7D32;
+
+margin-bottom:20px;
+
+}
+
+.tip-card p{
+
+font-size:20px;
+
+}

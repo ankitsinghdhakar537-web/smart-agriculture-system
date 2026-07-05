@@ -1,0 +1,61 @@
+.crop{
+
+padding:80px 8%;
+
+text-align:center;
+
+background:white;
+
+}
+
+.crop h2{
+
+font-size:40px;
+
+margin-bottom:30px;
+
+color:#2e7d32;
+
+}
+
+.crop select{
+
+padding:15px;
+
+width:250px;
+
+font-size:18px;
+
+border-radius:8px;
+
+margin-right:10px;
+
+}
+
+.crop button{
+
+padding:15px 30px;
+
+background:#2e7d32;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+.result{
+
+margin-top:40px;
+
+font-size:28px;
+
+font-weight:bold;
+
+color:#1b5e20;
+
+}
