@@ -1,78 +1,66 @@
 import { useState } from "react";
 import "./Weather.css";
-import { fetchWeather } from "../services/weatherService";
+import { fetchWeather } from "../Services/weatherService";
+import { useWeather } from "../context/WeatherContext";
 
 function Weather() {
-
   const [city, setCity] = useState("");
-  const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const API_KEY = "YOUR_OPENWEATHER_API_KEY";
+  const { weather, setWeather } = useWeather();
 
   async function getWeather() {
+    if (city.trim() === "") return;
 
-    if(city==="") return;
-
-    const url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+    setLoading(true);
 
     const data = await fetchWeather(city);
 
-setWeather(data);
-
     setWeather(data);
 
+    setLoading(false);
   }
 
-  return(
+  return (
+    <section className="weather" id="weather">
+      <h2>🌦 Live Weather Search</h2>
 
-<section className="weather">
+      <div className="search">
+        <input
+          type="text"
+          placeholder="Enter City Name"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
 
-<h2>Live Weather</h2>
+        <button onClick={getWeather}>
+          Search
+        </button>
+      </div>
 
-<div className="search">
+      {loading && <h3>Loading...</h3>}
 
-<input
+      {weather && weather.cod === 200 && (
+        <div className="weather-card">
+          <h3>📍 {weather.name}</h3>
 
-type="text"
+          <p>🌡 Temperature : {weather.main.temp} °C</p>
 
-placeholder="Enter City"
+          <p>💧 Humidity : {weather.main.humidity}%</p>
 
-value={city}
+          <p>💨 Wind : {weather.wind.speed} m/s</p>
 
-onChange={(e)=>setCity(e.target.value)}
+          <p>☁ Weather : {weather.weather[0].description}</p>
+        </div>
+      )}
 
-/>
-
-<button onClick={getWeather}>
-
-Search
-
-</button>
-
-</div>
-
-{weather && weather.cod===200 &&(
-
-<div className="weather-card">
-
-<h3>{weather.name}</h3>
-
-<p>🌡 Temperature : {weather.main.temp} °C</p>
-
-<p>💧 Humidity : {weather.main.humidity}%</p>
-
-<p>💨 Wind : {weather.wind.speed} m/s</p>
-
-<p>☁ {weather.weather[0].description}</p>
-
-</div>
-
-)}
-
-</section>
-
-)
-
+      {weather && weather.cod !== 200 && (
+        <h3 style={{ color: "red" }}>
+          ❌ City Not Found
+        </h3>
+      )}
+    </section>
+  );
 }
 
 export default Weather;

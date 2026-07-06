@@ -1,33 +1,51 @@
 import "./Navbar.css";
 
 function Navbar() {
+  return (
+    <nav className="navbar">
 
-    return (
+      <div className="logo">
+        🌱 Smart Agriculture
+      </div>
 
-        <nav className="navbar">
+      <ul className="nav-links">
 
-            <div className="logo">
+        <li>
+          <a href="#home">Home</a>
+        </li>
 
-                🌱 Smart Agriculture
+        <li>
+          <a href="#features">Features</a>
+        </li>
 
-            </div>
+        <li>
+          <a href="#weather">Weather</a>
+        </li>
 
-            <ul>
+        <li>
+          <a href="#crop">Crop</a>
+        </li>
 
-                <li>Home</li>
+        <li>
+          <a href="#dashboard">Dashboard</a>
+        </li>
 
-                <li>About</li>
+        <li>
+          <a href="#motor">Motor</a>
+        </li>
 
-                <li>Weather</li>
+        <li>
+          <a href="#advisor">AI Advisor</a>
+        </li>
 
-                <li>Contact</li>
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
 
-            </ul>
+      </ul>
 
-        </nav>
-
-    )
-
+    </nav>
+  );
 }
 
 export default Navbar;

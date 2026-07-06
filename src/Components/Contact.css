@@ -1,0 +1,81 @@
+.contact{
+
+padding:80px 8%;
+
+background:#f8fff8;
+
+text-align:center;
+
+}
+
+.contact h2{
+
+font-size:40px;
+
+color:#2e7d32;
+
+margin-bottom:20px;
+
+}
+
+.contact p{
+
+margin-bottom:30px;
+
+}
+
+.contact-box{
+
+width:500px;
+
+max-width:100%;
+
+margin:auto;
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.contact-box input,
+
+.contact-box textarea{
+
+padding:15px;
+
+font-size:17px;
+
+border:1px solid #ccc;
+
+border-radius:10px;
+
+}
+
+.contact-box button{
+
+padding:15px;
+
+background:#2e7d32;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.contact-box button:hover{
+
+background:#1b5e20;
+
+}

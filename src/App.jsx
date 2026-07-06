@@ -9,9 +9,8 @@ import Recommendation from "./Components/Recommendation";
 import FarmingTips from "./Components/FarmingTips";
 import FarmerDashboard from "./Components/FarmerDashboard";
 import Motor from "./Components/Motor";
-
-import "./App.css";
-
+import AIAdvisor from "./Components/AIAdvisor";
+import Contact from "./Components/Contact";
 function App() {
   return (
     <>
@@ -21,13 +20,13 @@ function App() {
       <Weather />
       <CropRecommendation />
       <Dashboard />
-      <SoilMoisture />
-      <Recommendation />
+      <SoilMoisture/>
+      <Recommendation/>
       <FarmingTips/>
       <FarmerDashboard/>
       <Motor/>
-      
-
+      <AIAdvisor/>
+      <Contact/>
     </>
   );
 }

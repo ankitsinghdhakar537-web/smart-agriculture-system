@@ -1,68 +1,83 @@
 import "./FarmerDashboard.css";
+import { useWeather } from "../context/WeatherContext";
 
 function FarmerDashboard() {
 
-    return(
+  const { weather } = useWeather();
 
-<section className="farmer">
+  if (!weather || weather.cod !== 200) {
+    return (
+      <section className="farmer" id="dashboard">
+        <h2>👨‍🌾 Farmer Dashboard</h2>
+        <p style={{ textAlign: "center" }}>
+          Search a city above to view dashboard.
+        </p>
+      </section>
+    );
+  }
 
-<h2>👨‍🌾 Farmer Dashboard</h2>
+  const temp = weather.main.temp;
+  const humidity = weather.main.humidity;
+  const wind = weather.wind.speed;
+  const weatherType = weather.weather[0].main;
 
-<div className="dashboard-grid">
+  // Crop Logic
+  let crop = "";
 
-<div className="box">
+  if (temp < 20) {
+    crop = "Wheat 🌾";
+  } else if (temp < 30) {
+    crop = "Soybean 🌱";
+  } else {
+    crop = "Cotton 🌿";
+  }
 
-<h3>🌡 Temperature</h3>
+  // Motor Logic
+  let motor = humidity < 40 ? "🟢 ON" : "🔴 OFF";
 
-<p>31°C</p>
+  return (
 
-</div>
+    <section className="farmer">
 
-<div className="box">
+      <h2>👨‍🌾 Farmer Dashboard</h2>
 
-<h3>💧 Soil Moisture</h3>
+      <div className="dashboard-grid">
 
-<p>42%</p>
+        <div className="box">
+          <h3>🌡 Temperature</h3>
+          <p>{temp}°C</p>
+        </div>
 
-</div>
+        <div className="box">
+          <h3>💧 Humidity</h3>
+          <p>{humidity}%</p>
+        </div>
 
-<div className="box">
+        <div className="box">
+          <h3>💨 Wind</h3>
+          <p>{wind} m/s</p>
+        </div>
 
-<h3>🌦 Humidity</h3>
+        <div className="box">
+          <h3>☁ Weather</h3>
+          <p>{weatherType}</p>
+        </div>
 
-<p>70%</p>
+        <div className="box">
+          <h3>🌱 Recommended Crop</h3>
+          <p>{crop}</p>
+        </div>
 
-</div>
+        <div className="box">
+          <h3>🚜 Motor Status</h3>
+          <p>{motor}</p>
+        </div>
 
-<div className="box">
+      </div>
 
-<h3>🌧 Rain Chance</h3>
+    </section>
 
-<p>35%</p>
-
-</div>
-
-<div className="box">
-
-<h3>🌱 Recommended Crop</h3>
-
-<p>Soybean</p>
-
-</div>
-
-<div className="box">
-
-<h3>🚜 Motor Status</h3>
-
-<p>OFF</p>
-
-</div>
-
-</div>
-
-</section>
-
-)
+  );
 
 }
 

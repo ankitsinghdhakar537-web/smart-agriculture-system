@@ -1,0 +1,24 @@
+.advisor{
+    padding:80px 8%;
+    background:#f4fff5;
+    text-align:center;
+}
+
+.advisor h2{
+    color:#2e7d32;
+    margin-bottom:40px;
+}
+
+.advisor-card{
+    max-width:600px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.advisor-card p{
+    margin:15px 0;
+    font-size:18px;
+}

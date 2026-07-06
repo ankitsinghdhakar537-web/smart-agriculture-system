@@ -1,4 +1,4 @@
-const API_KEY = "YOUR_OPENWEATHER_API_KEY";
+const API_KEY = "86435251523d3a34d4899924b06bec56";
 
 export async function fetchWeather(city) {
 

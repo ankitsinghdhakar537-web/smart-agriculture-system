@@ -1,35 +1,44 @@
-import { useState } from "react";
 import "./Motor.css";
+import { useWeather } from "../context/WeatherContext";
 
-function Motor(){
+function Motor() {
 
-const [status,setStatus]=useState(false);
+  const { weather } = useWeather();
 
-return(
+  if (!weather || weather.cod !== 200) {
+    return (
+      <section className="motor" id="motor">
+        <h2>🚜 Smart Irrigation</h2>
+        <p>Please search a city first.</p>
+      </section>
+    );
+  }
 
-<section className="motor">
+  const humidity = weather.main.humidity;
 
-<h2>Smart Irrigation</h2>
+  const motorOn = humidity < 40;
 
-<h3>
+  return (
+    <section className="motor">
 
-{status?"🟢 Motor Running":"🔴 Motor OFF"}
+      <h2>🚜 Smart Irrigation System</h2>
 
-</h3>
+      <h3>
+        {motorOn ? "🟢 Motor ON" : "🔴 Motor OFF"}
+      </h3>
 
-<button
+      <p>
+        Current Humidity : <b>{humidity}%</b>
+      </p>
 
-onClick={()=>setStatus(!status)}
+      <p>
+        {motorOn
+          ? "Humidity is low. Irrigation is recommended."
+          : "Humidity is sufficient. Irrigation is not required."}
+      </p>
 
->
-
-{status?"Turn OFF":"Turn ON"}
-
-</button>
-
-</section>
-
-)
+    </section>
+  );
 
 }
 

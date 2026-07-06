@@ -1,64 +1,55 @@
-import { useState } from "react";
 import "./CropRecommendation.css";
+import { useWeather } from "../context/WeatherContext";
 
 function CropRecommendation() {
 
-    const [season, setSeason] = useState("");
-    const [crop, setCrop] = useState("");
+  const { weather } = useWeather();
 
-    function recommendCrop() {
-
-        if (season === "Summer") {
-            setCrop("🌽 Maize, Cotton, Groundnut");
-        }
-        else if (season === "Winter") {
-            setCrop("🌾 Wheat, Mustard, Barley");
-        }
-        else if (season === "Rainy") {
-            setCrop("🌱 Rice, Soybean, Sugarcane");
-        }
-        else {
-            setCrop("Please Select Season");
-        }
-
-    }
-
+  if (!weather || weather.cod !== 200) {
     return (
+      <section className="crop" id="crop">
+        <h2>🌱 Smart Crop Recommendation</h2>
+        <p>Please search a city first.</p>
+      </section>
+    );
+  }
 
-        <section className="crop">
+  const temp = weather.main.temp;
+  const humidity = weather.main.humidity;
 
-            <h2>Crop Recommendation</h2>
+  let crop = "";
+  let reason = "";
 
-            <select
-                value={season}
-                onChange={(e) => setSeason(e.target.value)}
-            >
+  if (temp < 20) {
+    crop = "🌾 Wheat";
+    reason = "Cool weather is suitable for Wheat cultivation.";
+  } else if (temp < 30) {
+    crop = "🌱 Soybean";
+    reason = "Moderate temperature is ideal for Soybean.";
+  } else {
+    crop = "🌿 Cotton";
+    reason = "High temperature is suitable for Cotton.";
+  }
 
-                <option value="">Select Season</option>
+  return (
+   <section className="crop" id="crop">
 
-                <option>Summer</option>
+      <h2>🌱 Smart Crop Recommendation</h2>
 
-                <option>Winter</option>
+      <div className="result">
 
-                <option>Rainy</option>
+        <h3>{crop}</h3>
 
-            </select>
+        <p><strong>Temperature:</strong> {temp}°C</p>
 
-            <button onClick={recommendCrop}>
+        <p><strong>Humidity:</strong> {humidity}%</p>
 
-                Recommend Crop
+        <p>{reason}</p>
 
-            </button>
+      </div>
 
-            <div className="result">
-
-                {crop}
-
-            </div>
-
-        </section>
-
-    )
+    </section>
+  );
 
 }
 
