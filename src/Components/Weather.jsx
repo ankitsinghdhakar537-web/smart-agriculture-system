@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Weather.css";
-import { fetchWeather } from "../Services/weatherService";
+import {
+  fetchWeather,
+  fetchWeatherByLocation,
+} from "../Services/weatherService";
 import { useWeather } from "../context/WeatherContext";
 
 function Weather() {
@@ -9,6 +12,7 @@ function Weather() {
 
   const { weather, setWeather } = useWeather();
 
+  // Search by City
   async function getWeather() {
     if (city.trim() === "") return;
 
@@ -20,6 +24,32 @@ function Weather() {
 
     setLoading(false);
   }
+
+  // Auto Detect Current Location
+  useEffect(() => {
+    if (!navigator.geolocation) return;
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        setLoading(true);
+
+        const data = await fetchWeatherByLocation(lat, lon);
+
+        if (data && data.cod === 200) {
+          setWeather(data);
+          setCity(data.name);
+        }
+
+        setLoading(false);
+      },
+      (error) => {
+        console.log("Location Permission Denied", error);
+      }
+    );
+  }, []);
 
   return (
     <section className="weather" id="weather">

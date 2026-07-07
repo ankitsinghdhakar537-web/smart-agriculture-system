@@ -1,14 +1,28 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+import App from "./App";
+
 import "./index.css";
-import App from "./App.jsx";
 
 import { WeatherProvider } from "./context/WeatherContext";
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <WeatherProvider>
-      <App />
-    </WeatherProvider>
-  </StrictMode>
+import { AuthProvider } from "./context/AuthContext";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+
+<React.StrictMode>
+
+<AuthProvider>
+
+<WeatherProvider>
+
+<App/>
+
+</WeatherProvider>
+
+</AuthProvider>
+
+</React.StrictMode>
+
 );

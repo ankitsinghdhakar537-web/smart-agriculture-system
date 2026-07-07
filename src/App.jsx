@@ -1,33 +1,39 @@
-import Navbar from "./Components/Navbar";
-import Hero from "./Components/Hero";
-import Features from "./Components/Features";
-import Weather from "./Components/Weather";
-import CropRecommendation from "./Components/CropRecommendation";
-import Dashboard from "./Components/Dashboard";
-import SoilMoisture from "./Components/SoilMoisture";
-import Recommendation from "./Components/Recommendation";
-import FarmingTips from "./Components/FarmingTips";
-import FarmerDashboard from "./Components/FarmerDashboard";
-import Motor from "./Components/Motor";
-import AIAdvisor from "./Components/AIAdvisor";
-import Contact from "./Components/Contact";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./Pages/Home";
+import LoginPage from "./Pages/LoginPage";
+import SignupPage from "./Pages/SignupPage";
+
+import ProtectedRoute from "./routes/ProtectedRoute";
+
 function App() {
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Features />
-      <Weather />
-      <CropRecommendation />
-      <Dashboard />
-      <SoilMoisture/>
-      <Recommendation/>
-      <FarmingTips/>
-      <FarmerDashboard/>
-      <Motor/>
-      <AIAdvisor/>
-      <Contact/>
-    </>
+    <BrowserRouter>
+
+      <Routes>
+
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/login"
+          element={<LoginPage />}
+        />
+
+        <Route
+          path="/signup"
+          element={<SignupPage />}
+        />
+
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 
