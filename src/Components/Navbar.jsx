@@ -8,9 +8,7 @@ function Navbar() {
 
   async function handleLogout() {
     await logout();
-
     alert("✅ Logout Successful");
-
     navigate("/login");
   }
 
@@ -21,6 +19,7 @@ function Navbar() {
       </div>
 
       <ul className="nav-links">
+
         <li><a href="#home">Home</a></li>
 
         <li><a href="#features">Features</a></li>
@@ -37,6 +36,12 @@ function Navbar() {
 
         <li><a href="#contact">Contact</a></li>
 
+        {user && (
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+        )}
+
         {!user ? (
           <li>
             <Link to="/login">Login</Link>
@@ -44,7 +49,7 @@ function Navbar() {
         ) : (
           <>
             <li className="user-email">
-               👤 {user.email.split("@")[0]}
+              👤 {user.email.split("@")[0]}
             </li>
 
             <li>
@@ -57,6 +62,7 @@ function Navbar() {
             </li>
           </>
         )}
+
       </ul>
     </nav>
   );
