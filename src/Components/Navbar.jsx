@@ -20,36 +20,24 @@ function Navbar() {
 
       <ul className="nav-links">
 
-        <li><a href="#home">Home</a></li>
+        <li><a href="#home">🏠 Home</a></li>
 
-        <li><a href="#features">Features</a></li>
+        <li><a href="#weather">🌦 Weather</a></li>
 
-        <li><a href="#weather">Weather</a></li>
+        <li><a href="#dashboard">📊 Dashboard</a></li>
 
-        <li><a href="#crop">Crop</a></li>
+        <li><a href="#advisor">🤖 AI Advisor</a></li>
 
-        <li><a href="#dashboard">Dashboard</a></li>
-
-        <li><a href="#motor">Motor</a></li>
-
-        <li><a href="#advisor">AI Advisor</a></li>
-
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">📞 Contact</a></li>
 
         {user && (
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-        )}
-
-        {!user ? (
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        ) : (
           <>
+            <li>
+              <Link to="/profile">👤 Profile</Link>
+            </li>
+
             <li className="user-email">
-              👤 {user.email.split("@")[0]}
+              👋 {user.email.split("@")[0]}
             </li>
 
             <li>
@@ -61,6 +49,12 @@ function Navbar() {
               </button>
             </li>
           </>
+        )}
+
+        {!user && (
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
         )}
 
       </ul>
