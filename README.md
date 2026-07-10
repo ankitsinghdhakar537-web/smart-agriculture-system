@@ -1,16 +1,43 @@
-# React + Vite
+# 🌱 Smart Agriculture System
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+[![Live Demo](https://img.shields.io/badge/Live-Demo-green?style=for-the-badge)](https://smart-agriculture-system.vercel.app)
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://smart-agriculture-system.vercel.app
 
-## React Compiler
+## 💻 GitHub Repository
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://github.com/ankitsinghdhakar537-web/smart-agriculture-system
 
-## Expanding the Oxlint configuration
+## 📖 About
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Smart Agriculture System is a Full Stack MERN application that helps farmers manage their profiles and access smart agriculture features such as weather information, crop recommendations, and dashboard management.
+
+## ✨ Features
+
+- 🔐 User Login & Signup
+- 👤 Profile Management
+- 📊 Farmer Dashboard
+- 🌦 Weather Information
+- 🌱 Crop Recommendation
+- 📩 Contact Page
+- 🔥 Firebase Authentication
+- ☁ MongoDB Atlas Database
+- 🚀 Railway Backend Deployment
+- 🌐 Vercel Frontend Deployment
+
+## 🛠 Tech Stack
+
+- React.js
+- Vite
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Firebase
+- Railway
+- Vercel
+
+## 👨‍💻 Developer
+
+**Ankit Dhakar**
