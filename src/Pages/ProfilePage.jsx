@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ProfilePage.css";
 import { useAuth } from "../context/AuthContext";
+import { API_URL } from "../config";
 
 function ProfilePage() {
   const { user } = useAuth();
@@ -20,43 +21,42 @@ function ProfilePage() {
   const [isProfileExists, setIsProfileExists] = useState(false);
 
   // Load Profile
-  // Load Profile
-useEffect(() => {
-  if (!user) return;
+  useEffect(() => {
+    if (!user) return;
 
-  async function fetchProfile() {
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/users/${user.email}`
-      );
+    async function fetchProfile() {
+      try {
+        const response = await fetch(
+          `${API_URL}/api/users/${user.email}`
+        );
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (response.ok) {
-        setFormData({
-          name: data.user.name,
-          email: data.user.email,
-          phone: data.user.phone,
-          village: data.user.village,
-          state: data.user.state,
-          farmSize: data.user.farmSize,
-          crop: data.user.crop,
-        });
+        if (response.ok) {
+          setFormData({
+            name: data.user.name,
+            email: data.user.email,
+            phone: data.user.phone,
+            village: data.user.village,
+            state: data.user.state,
+            farmSize: data.user.farmSize,
+            crop: data.user.crop,
+          });
 
-        setIsProfileExists(true);
-      } else {
-        setFormData((prev) => ({
-          ...prev,
-          email: user.email,
-        }));
+          setIsProfileExists(true);
+        } else {
+          setFormData((prev) => ({
+            ...prev,
+            email: user.email,
+          }));
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
-  }
 
-  fetchProfile();
-}, [user]);
+    fetchProfile();
+  }, [user]);
 
   // Handle Input Change
   const handleChange = (e) => {
@@ -72,8 +72,8 @@ useEffect(() => {
 
     try {
       const url = isProfileExists
-        ? `http://localhost:5000/api/users/${user.email}`
-        : "http://localhost:5000/api/users";
+        ? `${API_URL}/api/users/${user.email}`
+        : `${API_URL}/api/users`;
 
       const method = isProfileExists ? "PUT" : "POST";
 
@@ -87,15 +87,13 @@ useEffect(() => {
 
       const data = await response.json();
 
-if (response.ok) {
-  setIsProfileExists(true);
-
-  alert(data.message);
-
-  navigate("/");
-} else {
-  alert(data.message);
-}
+      if (response.ok) {
+        setIsProfileExists(true);
+        alert(data.message);
+        navigate("/");
+      } else {
+        alert(data.message);
+      }
     } catch (error) {
       console.log(error);
       alert("Server Error");

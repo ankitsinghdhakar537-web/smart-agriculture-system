@@ -3,6 +3,7 @@ import { useWeather } from "../context/WeatherContext";
 import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 function FarmerDashboard() {
   const { weather } = useWeather();
@@ -17,8 +18,8 @@ function FarmerDashboard() {
     async function loadProfile() {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/users/${user.email}`
-        );
+  `${API_URL}/api/users/${user.email}`
+);
 
         const data = await res.json();
 

@@ -5,9 +5,6 @@ const User = require("../models/User");
 // ===============================
 const createUser = async (req, res) => {
   try {
-    console.log("========== REQUEST ==========");
-    console.log(req.body);
-
     const { name, email, phone, village, state, farmSize, crop } = req.body;
 
     const existingUser = await User.findOne({ email });
@@ -29,19 +26,12 @@ const createUser = async (req, res) => {
       crop,
     });
 
-    console.log("========== SAVED ==========");
-    console.log(user);
-
     return res.status(201).json({
       success: true,
       message: "Farmer Profile Created Successfully",
       user,
     });
-
   } catch (error) {
-    console.log("========== ERROR ==========");
-    console.error(error);
-
     return res.status(500).json({
       success: false,
       message: error.message,
@@ -50,7 +40,27 @@ const createUser = async (req, res) => {
 };
 
 // ===============================
-// Get User
+// Get All Users
+// ===============================
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find().sort({ createdAt: -1 });
+
+    return res.status(200).json({
+      success: true,
+      count: users.length,
+      users,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// ===============================
+// Get Single User
 // ===============================
 const getUser = async (req, res) => {
   try {
@@ -69,7 +79,6 @@ const getUser = async (req, res) => {
       success: true,
       user,
     });
-
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -105,7 +114,6 @@ const updateUser = async (req, res) => {
       message: "Profile Updated Successfully",
       user,
     });
-
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -116,6 +124,7 @@ const updateUser = async (req, res) => {
 
 module.exports = {
   createUser,
+  getAllUsers,
   getUser,
   updateUser,
 };
