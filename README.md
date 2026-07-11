@@ -3,9 +3,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-Demo-green?style=for-the-badge)](https://smart-agriculture-system.vercel.app)
 
 ## 🚀 Live Demo
-
-https://smart-agriculture-system.vercel.app
-
+https://smart-agriculture-system-phi.vercel.app
 ## 💻 GitHub Repository
 
 https://github.com/ankitsinghdhakar537-web/smart-agriculture-system
